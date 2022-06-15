@@ -701,6 +701,7 @@
 
     $(document).on("click", "table.sale-list tbody .add-delivery", function(event) {
         var id = $(this).data('id').toString();
+        alert("inside table.sale-list tbody .add-delivery");
         $.get('delivery/create/'+id, function(data) {
             $('#dr').text(data[0]);
             $('#sr').text(data[1]);
