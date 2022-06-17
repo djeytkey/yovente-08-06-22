@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Sale;
+use App\City;
 use App\Product_Sale;
 use App\Product;
 use App\ProductVariant;
@@ -34,35 +35,36 @@ class DeliveryController extends Controller
     public function create($id){
     	$lims_delivery_data = Delivery::where('sale_id', $id)->first();
     	if($lims_delivery_data){
-    		//$customer_sale = DB::table('sales')->join('customers', 'sales.customer_id', '=', 'customers.id')->where('sales.id', $id)->select('sales.reference_no','customers.name')->get();
-
     		$delivery_data[] = $lims_delivery_data->reference_no;
-    		//$delivery_data[] = $customer_sale[0]->reference_no;
     		$delivery_data[] = $lims_delivery_data->status;
     		$delivery_data[] = $lims_delivery_data->delivered_by;
     		$delivery_data[] = $lims_delivery_data->recieved_by;
-    		//$delivery_data[] = $customer_sale[0]->name;
     		$delivery_data[] = $lims_delivery_data->address;
     		$delivery_data[] = $lims_delivery_data->note;
     	}
     	else{
-    		//$customer_sale = DB::table('sales')->join('customers', 'sales.customer_id', '=', 'customers.id')->where('sales.id', $id)->select('sales.reference_no','customers.name', 'customers.address', 'customers.city', 'customers.country')->get();
-
-    		$delivery_data[] = 'dr-' . date("Ymd") . '-'. date("his");
-    		//$delivery_data[] = $customer_sale[0]->reference_no;
-    		$delivery_data[] = '';
-    		$delivery_data[] = '';
-    		$delivery_data[] = '';
-    		//$delivery_data[] = $customer_sale[0]->name;
-    		//$delivery_data[] = $customer_sale[0]->address.' '.$customer_sale[0]->city.' '.$customer_sale[0]->country;
-    		$delivery_data[] = '';
+    		$lims_sale_data = Sale::where('id', $id)->first();
+    		$lims_city_data = City::where('id', $lims_sale_data->customer_city)->first();
+    		$delivery_data[] = 'dr-' . date("dmy") . '-'. date("His");  //Delivery reference
+    		$delivery_data[] = $lims_sale_data->reference_no;           //Sale reference
+    		$delivery_data[] = '';                                      //Pickup date
+    		$delivery_data[] = '';                                      //Sent date
+    		$delivery_data[] = '';                                      //Distribution date
+    		$delivery_data[] = '';                                      //Return date
+    		$delivery_data[] = '';                                      //Motif Return
+    		$delivery_data[] = '';                                      //Delivered By
+    		$delivery_data[] = $lims_sale_data->customer_name;          //Customer Name
+    		$delivery_data[] = $lims_sale_data->customer_tel;           //Customer Tel
+    		$delivery_data[] = $lims_sale_data->customer_address;       //Customer Address
+            $delivery_data[] = $lims_city_data->name;                   //Customer City
+    		$delivery_data[] = '';                                      //Note 
     	}        
     	return $delivery_data;
     }
 
     public function store(Request $request)
     {
-        //dd($request);
+        dd($request);
     	$data = $request->except('file');
     	$delivery = Delivery::firstOrNew(['reference_no' => $data['reference_no'] ]);
         if ($delivery->exists) {

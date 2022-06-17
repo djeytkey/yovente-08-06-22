@@ -1,3 +1,12 @@
+table.f-wth {
+	width: 100%;
+}
+
+td.w-20 {
+	width: 20%;
+	padding: 0 0.75rem;
+}
+
 .no-mb {
 	margin-bottom: 0;
 }
