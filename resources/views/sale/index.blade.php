@@ -385,6 +385,48 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="17-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="18-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="19-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="20-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="21-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>                        
                         {{-- <select name="status" required class="form-control selectpicker">
                             <option value="1">{{trans('file.Packing')}}</option>
@@ -447,6 +489,17 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    $(document).ready(function(){
+        $.fn.datepicker.defaults.format = "dd-mm-yyyy";
+        datepicker = $('.datepicker').datepicker(config);
+        config.locale = 'fr-fr';
+        datepicker.destroy();
+        datepicker = $('.datepicker').datepicker(config);
+        // $localLang = $('html').attr('lang');
+        // alert($localLang);
+        // $('.datepicker').datepicker();
     });
 
     $(".daterangepicker-field").daterangepicker({
@@ -1058,10 +1111,6 @@
         }
         return false;
     }
-
-    $(document).ready(function(){
-        
-    });
 
 </script>
 @endsection

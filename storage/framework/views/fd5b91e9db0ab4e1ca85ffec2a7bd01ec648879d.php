@@ -341,49 +341,117 @@
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.Delivery Reference')); ?></label>
+                        <label><strong><?php echo e(trans('file.Delivery Reference')); ?></strong></label>
                         <p id="dr"></p>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.Sale Reference')); ?></label>
+                        <label><strong><?php echo e(trans('file.Sale Reference')); ?></strong></label>
                         <p id="sr"></p>
                     </div>
                     <div class="col-md-12 form-group">
-                        <label><?php echo e(trans('file.Status')); ?> *</label>
-                        <select name="status" required class="form-control selectpicker">
-                            <option value="1"><?php echo e(trans('file.Packing')); ?></option>
-                            <option value="2"><?php echo e(trans('file.Pickup')); ?></option>
-                            <option value="3"><?php echo e(trans('file.Delivering')); ?></option>
-                            <option value="4"><?php echo e(trans('file.Delivered')); ?></option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mt-2 form-group">
-                        <label><?php echo e(trans('file.Delivered By')); ?></label>
-                        <input type="text" name="delivered_by" class="form-control">
-                    </div>
-                    <div class="col-md-6 mt-2 form-group">
-                        <label><?php echo e(trans('file.Recieved By')); ?> </label>
-                        <input type="text" name="recieved_by" class="form-control">
+                        <label><strong><?php echo e(trans('file.Status')); ?> *</strong></label>
+                        <table class="f-wth table">
+                            <tr>
+                                <td class="w-20">
+                                    <div>
+                                        <input class="mt-2" type="checkbox" name="status" id="chk_pickup" value="1">
+                                        <label class="mt-2"><?php echo e(trans('file.Pickup')); ?></label>
+                                    </div>
+                                </td>
+                                <td class="w-20">
+                                    <div>
+                                        <input class="mt-2" type="checkbox" name="status" id="chk_sent" value="2">
+                                        <label class="mt-2"><?php echo e(trans('file.Sent')); ?></label>                     
+                                    </div>
+                                </td>
+                                <td class="w-20">
+                                    <div>
+                                        <input class="mt-2" type="checkbox" name="status" id="chk_distribution" value="3">
+                                        <label class="mt-2"><?php echo e(trans('file.Distribution')); ?></label>
+                                    </div>
+                                </td>
+                                <td class="w-20">
+                                    <div>
+                                        <input class="mt-2" type="checkbox" name="status" id="chk_delivered" value="4">
+                                        <label class="mt-2"><?php echo e(trans('file.Delivered')); ?></label>
+                                    </div>
+                                </td>
+                                <td class="w-20">
+                                    <div>
+                                        <input class="mt-2" type="checkbox" name="status" id="chk_return" value="5">
+                                        <label class="mt-2"><?php echo e(trans('file.Return')); ?></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="17-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="18-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="19-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="20-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" value="21-06-2022">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>                        
+                        
                     </div>
                     <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.customer')); ?> *</label>
+                        <label><strong><?php echo e(trans('file.customer')); ?></strong></label>
                         <p id="customer"></p>
                     </div>
-                    <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.Attach File')); ?></label>
-                        <input type="file" name="file" class="form-control">
+                    <div class="col-md-6 mt-2 form-group">
+                        <label><strong><?php echo e(trans('file.Delivered By')); ?></strong></label>
+                        <input type="text" name="delivered_by" class="form-control">
                     </div>
+                    
+                    
+                    
                     <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.Address')); ?> *</label>
-                        <textarea rows="3" name="address" class="form-control" required></textarea>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label><?php echo e(trans('file.Note')); ?></label>
+                        <label><strong><?php echo e(trans('file.Note')); ?></strong></label>
                         <textarea rows="3" name="note" class="form-control"></textarea>
                     </div>
                 </div>
                 <input type="hidden" name="reference_no">
                 <input type="hidden" name="sale_id">
+                <input type="hidden" name="pickup">
+                <input type="hidden" name="sent">
+                <input type="hidden" name="distribution">
+                <input type="hidden" name="return">
+                <input type="hidden" name="return_reason">
+                <input type="hidden" name="delivered">
                 <button type="submit" class="btn btn-primary"><?php echo e(trans('file.submit')); ?></button>
                 <?php echo e(Form::close()); ?>
 
@@ -406,6 +474,17 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    $(document).ready(function(){
+        $.fn.datepicker.defaults.format = "dd-mm-yyyy";
+        datepicker = $('.datepicker').datepicker(config);
+        config.locale = 'fr-fr';
+        datepicker.destroy();
+        datepicker = $('.datepicker').datepicker(config);
+        // $localLang = $('html').attr('lang');
+        // alert($localLang);
+        // $('.datepicker').datepicker();
     });
 
     $(".daterangepicker-field").daterangepicker({
@@ -700,21 +779,34 @@
 
     $(document).on("click", "table.sale-list tbody .add-delivery", function(event) {
         var id = $(this).data('id').toString();
-        alert("inside table.sale-list tbody .add-delivery");
         $.get('delivery/create/'+id, function(data) {
             $('#dr').text(data[0]);
             $('#sr').text(data[1]);
-            if(data[2]){
-                $('select[name="status"]').val(data[2]);
-                $('.selectpicker').selectpicker('refresh');
+            if(data[2]) {
+                $('#chk_pickup').prop( "checked", true );
+                $('#chk_pickup').prop( "disabled", true );
             }
-            $('input[name="delivered_by"]').val(data[3]);
-            $('input[name="recieved_by"]').val(data[4]);
-            $('#customer').text(data[5]);
-            $('textarea[name="address"]').val(data[6]);
-            $('textarea[name="note"]').val(data[7]);
+            if(data[3]) {
+                $('#chk_sent').prop( "checked", true );
+                $('#chk_sent').prop( "disabled", true );
+            }
+            if(data[4]) {
+                $('#chk_distribution').prop( "checked", true );
+                $('#chk_distribution').prop( "disabled", true );
+            }
+            if(data[5]) {
+                $('#chk_return').prop( "checked", true );
+                $('#chk_return').prop( "disabled", true );
+            }
+            //Ici Motif Return
+
+
+            $('input[name="delivered_by"]').val(data[7]);
+            $('#customer').html(data[8] + "<br>" + data[9] + "<br>" + data[10] + "<br>" + data[11]);
+            $('textarea[name="note"]').val(data[12]);
             $('input[name="reference_no"]').val(data[0]);
             $('input[name="sale_id"]').val(id);
+            
             $('#add-delivery').modal('show');
         });
     });
@@ -1004,10 +1096,6 @@
         }
         return false;
     }
-
-    $(document).ready(function(){
-        
-    });
 
 </script>
 <?php $__env->stopSection(); ?>
